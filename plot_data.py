@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 
 df1 = pd.read_csv('Specimen_RawData_1_SN19Z009675.csv', skiprows=2, usecols=[1, 2], names=["Extension", "Force"])
 df2 = pd.read_csv('Specimen_RawData_2_SN1A0005640.csv', skiprows=2, usecols=[1, 2], names=["Extension", "Force"])
@@ -19,6 +20,12 @@ plt.plot(EUT4[:,0], EUT4[:,1], label='EUT4')
 plt.xlabel("Extension (mm)"); plt.ylabel("Force(N)"); plt.title("Instron Test 06/27/2019")
 plt.legend(); plt.grid()
 plt.show()
+
+EUT_max = [np.amax(EUT1), np.amax(EUT2), np.amax(EUT3) , np.amax(EUT4)]
+
+print(EUT_max)
+
+print(np.average(EUT_max[0:3]))
 
 #ax = df1.plot(kind='scatter', x='Extension', y='Force', color='Red', label='EUT1')
 #df2.plot(kind='scatter', x='Extension', y='Force', color='Blue', label='EUT2', ax=ax)
